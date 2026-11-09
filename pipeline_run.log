@@ -1,0 +1,30 @@
+2026-11-09 21:29:13,602 - INFO - --- Starting NYC Taxi Data Pipeline ---
+2026-11-09 21:29:13,603 - INFO - Directories setup completed.
+2026-11-09 21:29:16,670 - INFO - Downloaded: yellow_tripdata_2024-01.parquet
+2026-11-09 21:29:22,095 - INFO - Downloaded: yellow_tripdata_2024-02.parquet
+2026-11-09 21:29:27,999 - INFO - Downloaded: yellow_tripdata_2024-03.parquet
+2026-11-09 21:29:34,114 - INFO - Downloaded: yellow_tripdata_2024-04.parquet
+2026-11-09 21:29:40,223 - INFO - Downloaded: yellow_tripdata_2024-05.parquet
+2026-11-09 21:29:46,134 - INFO - Downloaded: yellow_tripdata_2024-06.parquet
+2026-11-09 21:29:48,345 - INFO - Downloaded: green_tripdata_2024-01.parquet
+2026-11-09 21:29:49,486 - INFO - Downloaded: green_tripdata_2024-02.parquet
+2026-11-09 21:29:50,638 - INFO - Downloaded: green_tripdata_2024-03.parquet
+2026-11-09 21:29:51,812 - INFO - Downloaded: green_tripdata_2024-04.parquet
+2026-11-09 21:29:52,912 - INFO - Downloaded: green_tripdata_2024-05.parquet
+2026-11-09 21:29:54,075 - INFO - Downloaded: green_tripdata_2024-06.parquet
+2026-11-09 21:29:57,426 - INFO - Downloaded: fhv_tripdata_2024-01.parquet
+2026-11-09 21:30:00,728 - INFO - Downloaded: fhv_tripdata_2024-02.parquet
+2026-11-09 21:30:04,306 - INFO - Downloaded: fhv_tripdata_2024-03.parquet
+2026-11-09 21:30:08,808 - INFO - Downloaded: fhv_tripdata_2024-04.parquet
+2026-11-09 21:30:12,283 - INFO - Downloaded: fhv_tripdata_2024-05.parquet
+2026-11-09 21:30:15,754 - INFO - Downloaded: fhv_tripdata_2024-06.parquet
+2026-11-09 21:30:40,110 - INFO - Downloaded: fhvhv_tripdata_2024-01.parquet
+2026-11-09 21:31:03,707 - INFO - Downloaded: fhvhv_tripdata_2024-02.parquet
+2026-11-09 21:31:35,610 - INFO - Downloaded: fhvhv_tripdata_2024-03.parquet
+2026-11-09 21:32:06,795 - INFO - Downloaded: fhvhv_tripdata_2024-04.parquet
+2026-11-09 21:32:38,048 - INFO - Downloaded: fhvhv_tripdata_2024-05.parquet
+2026-11-09 21:33:07,957 - INFO - Downloaded: fhvhv_tripdata_2024-06.parquet
+2026-11-09 21:33:08,000 - INFO - Starting Data Validation...
+2026-11-09 21:33:08,002 - INFO - Data Validation Passed.
+2026-11-09 21:33:08,008 - INFO - Curated output saved to output\curated_taxi_summary.csv
+2026-11-09 21:33:08,008 - INFO - --- Pipeline Execution Completed Successfully ---

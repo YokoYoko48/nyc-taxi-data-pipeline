@@ -1,0 +1,79 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="pipeline" name="Pipeline / Data Flow">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="900" pageHeight="1000" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- Groups -->
+        <mxCell id="g_ext" value="External Source" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=#f5f5f5;strokeColor=#666666;dashed=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="240" y="20" width="430" height="110" as="geometry"/>
+        </mxCell>
+        <mxCell id="g_ing" value="Step 1: Data Ingestion" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=#dae8fc;strokeColor=#6c8ebf;dashed=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="240" y="190" width="430" height="130" as="geometry"/>
+        </mxCell>
+        <mxCell id="g_qual" value="Step 2: Data Quality Check" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=#fff2cc;strokeColor=#d6b656;dashed=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="240" y="380" width="430" height="170" as="geometry"/>
+        </mxCell>
+        <mxCell id="g_trans" value="Step 3: Transformation" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=#d5e8d4;strokeColor=#82b366;dashed=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="240" y="610" width="430" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="g_out" value="Step 4: Curated Outputs" style="rounded=1;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=#e1d5e7;strokeColor=#9673a6;dashed=1;arcSize=5;" vertex="1" parent="1">
+          <mxGeometry x="240" y="790" width="430" height="120" as="geometry"/>
+        </mxCell>
+
+        <!-- Nodes -->
+        <mxCell id="TLC" value="NYC TLC Cloud Storage&lt;br&gt;(Parquet Files)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#ffffff;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="260" y="50" width="200" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="EXTRACT" value="extract_data()" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="260" y="235" width="150" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="DATA_DIR" value="Local Directory&lt;br&gt;'data/'" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#ffffff;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="520" y="230" width="130" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="VALIDATE" value="validate_data()&lt;br&gt;- Check Completeness&lt;br&gt;- Check Nulls&lt;br&gt;- Check Negative Trips" style="rhombus;whiteSpace=wrap;html=1;fontSize=11;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="250" y="405" width="210" height="135" as="geometry"/>
+        </mxCell>
+        <mxCell id="LOG" value="pipeline_run.log" style="shape=document;whiteSpace=wrap;html=1;boundedLbl=1;fillColor=#ffffff;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="520" y="440" width="130" height="60" as="geometry"/>
+        </mxCell>
+        <mxCell id="TRANSFORM" value="transform_and_load()&lt;br&gt;- Aggregate by Taxi Type&lt;br&gt;- Calculate Market Share (%)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="300" y="645" width="310" height="70" as="geometry"/>
+        </mxCell>
+        <mxCell id="OUT_MONTH" value="output/&lt;br&gt;curated_monthly_trips.csv" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fontSize=11;fillColor=#ffffff;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="260" y="830" width="190" height="65" as="geometry"/>
+        </mxCell>
+        <mxCell id="OUT_SUM" value="output/&lt;br&gt;curated_taxi_summary.csv" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fontSize=11;fillColor=#ffffff;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="470" y="830" width="190" height="65" as="geometry"/>
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e1" value="HTTP GET (24 Files)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1" source="TLC" target="EXTRACT">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="Download &amp;amp; Save" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;exitX=1;exitY=0.3;exitDx=0;exitDy=0;entryX=0;entryY=0.2;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="EXTRACT" target="DATA_DIR">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="Read Metadata&lt;br&gt;(Row Counts)" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;exitX=0;exitY=0.8;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="DATA_DIR" target="EXTRACT">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="Raw DataFrame" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1" source="EXTRACT" target="VALIDATE">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e5" value="Valid DataFrame" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=11;" edge="1" parent="1" source="VALIDATE" target="TRANSFORM">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e6" value="Error / Warning" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;dashed=1;fontSize=11;" edge="1" parent="1" source="VALIDATE" target="LOG">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e7" value="Save Monthly Traceability" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="TRANSFORM" target="OUT_MONTH">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e8" value="Save Final Summary" style="edgeStyle=orthogonalEdgeStyle;rounded=1;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="TRANSFORM" target="OUT_SUM">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -43,3 +43,12 @@
 2026-11-12 22:21:00,435 - INFO - Summary curated output saved to output\curated_taxi_summary.csv
 2026-11-12 22:21:00,436 - INFO - Total trips processed: 149,655,796
 2026-11-12 22:21:00,436 - INFO - --- Pipeline Execution Completed Successfully ---
+2026-11-14 15:21:10,409 - INFO - --- Starting NYC Taxi Data Pipeline ---
+2026-11-14 15:21:10,410 - INFO - Directories setup completed.
+2026-11-14 15:21:10,591 - INFO - Starting Data Validation...
+2026-11-14 15:21:10,591 - INFO - Completeness Check Passed: All 24 records present.
+2026-11-14 15:21:10,599 - INFO - Data Validation Passed.
+2026-11-14 15:21:10,604 - INFO - Monthly curated data saved to output\curated_monthly_trips.csv
+2026-11-14 15:21:10,615 - INFO - Summary curated output saved to output\curated_taxi_summary.csv
+2026-11-14 15:21:10,615 - INFO - Total trips processed: 149,655,796
+2026-11-14 15:21:10,615 - INFO - --- Pipeline Execution Completed Successfully ---
